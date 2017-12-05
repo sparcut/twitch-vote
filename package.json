@@ -1,15 +1,15 @@
 {
-  "name": "twitch-chat-vote",
+  "name": "twitch-vote",
   "version": "1.0.0",
-  "description": "",
+  "description": "Create simple live polls entered via chat commands",
   "main": "index.js",
   "scripts": {
     "start": "node .",
     "test": ""
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "sparcut",
+  "license": "GPL 3.0",
   "dependencies": {
     "express": "^4.16.2",
     "tmi.js": "^1.2.1",
