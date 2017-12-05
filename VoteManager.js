@@ -45,8 +45,6 @@ class VoteManager extends EventEmitter {
 
     this.state = 'ready';
     this.emit(this.state);
-
-    console.log('VoteManager: Ready');
   }
 
   checkMessage(message, user) {
@@ -60,8 +58,6 @@ class VoteManager extends EventEmitter {
         this.addVote(option, user);
       }
     }
-
-    console.log(`VoteManager: Checked ${user}'s message - ${message}`);
   }
 
   startTimer() {
@@ -69,15 +65,10 @@ class VoteManager extends EventEmitter {
       // If vote not manually stopped or timer hit 0
       if(this.timer > 1 && this.state !== 'ended') {
         this.timer -= 1000;
-        console.log(this.timer);
         setTimeout(decrementTimer, 1000);
-        console.log(`VoteManager: Time - ${this.timer/1000}s`);
       } else {
         this.state = 'ended';
         this.emit(this.state, this.votes);
-        console.log('VoteManager: Ended');
-        console.log(this.votes);
-        console.log(this.voters);
       }
     }
 
