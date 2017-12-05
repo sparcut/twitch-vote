@@ -1,0 +1,19 @@
+{
+  "name": "twitch-chat-vote",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "tmi.js": "^1.2.1",
+    "uuid": "^3.1.0",
+    "ws": "^3.3.2"
+  }
+}

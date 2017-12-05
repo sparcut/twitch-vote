@@ -1,0 +1,13 @@
+{
+  "server": {
+    "port": 3333
+  },
+  "twitch": {
+    "username": "[Twitch bot username]",
+    "password": "oauth:[Twitch OAuth token]",
+    "channels": [ "[Array of Twitch usernames]" ]
+  },
+  "vote": {
+    "command": "!vote"
+  }
+}
