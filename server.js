@@ -4,7 +4,6 @@ const http = require('http');
 const tmi = require('tmi.js');
 const ws = require('ws');
 
-const VoteManager = require('./VoteManager');
 
 // --- Config ---
 const CONFIG = require('./config.json');
@@ -28,37 +27,19 @@ app.use('/', express.static('public'));
 
 
 // --- Twitch ---
-const currentVote = new VoteManager('Kappa', 10, [ { text: 'Eat', option: 'A'  }, { text: 'Sleep', option: 'B' } ]);
-var voteActive = false;
-
-currentVote.on('ready', () => {
-  voteActive = true; 
-});
-
-currentVote.on('end', () => {
-  voteActive = false;
-})
-
-currentVote.init();
-
-
-TwitchClient.connect();
-
 TwitchClient.on('message', (channel, userstate, message, self) => {
-  if(!voteActive) return;
   
   switch(userstate['message-type']) {
     case "action":
-      break;
+    break;
     case "chat":
-      currentVote.checkMessage(message, userstate);
-      break;
+    break;
     case "whisper":
-      currentVote.checkMessage(message, userstate);
-      break;
+    break;
   }
 });
 
+// TwitchClient.connect();
 
 
 // --- Init ---
