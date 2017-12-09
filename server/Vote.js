@@ -17,9 +17,10 @@ const DEFAULT_OPTIONS = {
   }
 }
 
-class VoteManager extends EventEmitter {
+class Vote extends EventEmitter {
   constructor(title, time, questions, options) {
     super();
+    this.args = { title, time, questions, options }
 
     this.title = title;
     this.lengthTime = (time || 60) * 1000; // time === seconds
@@ -147,8 +148,8 @@ class VoteManager extends EventEmitter {
   }
 
   votesUpdated() {
-    this.emit('update' ,this.votes);
+    this.emit('update', this.votes);
   }
 }
 
-module.exports = VoteManager;
+module.exports = Vote;
