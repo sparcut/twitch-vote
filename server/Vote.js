@@ -1,7 +1,7 @@
 const EventEmitter = require('events');
 
 
-const CONFIG = require('./config.json');
+const CONFIG = require('../config.json');
 
 const VOTE_REGEXP = /!vote (\S*)/i; // Selects the first !vote in string
 const DEFAULT_OPTIONS = {

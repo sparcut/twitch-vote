@@ -6,7 +6,7 @@ const ws = require('ws');
 
 
 // --- Config ---
-const CONFIG = require('./config.json');
+const CONFIG = require('../config.json');
 
 // --- Setup ---
 const app = express();
