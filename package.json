@@ -4,8 +4,10 @@
   "description": "Create simple live polls entered via chat commands",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
-    "test": ""
+    "start": "npm run build",
+    "build": "webpack --progress",
+    "watch": "webpack -w --progress",
+    "server": "node server"
   },
   "keywords": [],
   "author": "sparcut",

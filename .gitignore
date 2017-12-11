@@ -60,3 +60,7 @@ typings/
 
 # Config file
 config.json
+
+# dist & build folder
+dist/
+build/
