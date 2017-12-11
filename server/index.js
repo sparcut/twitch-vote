@@ -92,16 +92,16 @@ VoteController.on('end', vote => {
 TwitchClient.on('message', (channel, userstate, message, self) => {
   
   switch(userstate['message-type']) {
-    case "action":
-    break;
     case "chat":
-    break;
     case "whisper":
+      VoteController.newMessage(message, user);
     break;
+    // case "action":
+    // break;
   }
 });
 
-// TwitchClient.connect();
+TwitchClient.connect();
 
 
 // --- Init ---
