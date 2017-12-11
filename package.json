@@ -15,5 +15,9 @@
     "tmi.js": "^1.2.1",
     "uuid": "^3.1.0",
     "ws": "^3.3.2"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.2.3",
+    "webpack": "^3.10.0"
   }
 }
