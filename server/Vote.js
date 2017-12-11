@@ -68,7 +68,7 @@ class Vote extends EventEmitter {
         this.timer -= 1000;
         setTimeout(decrementTimer, 1000);
       } else {
-        this.state = 'ended';
+        this.state = 'end';
         this.emit(this.state, this.votes);
       }
     }

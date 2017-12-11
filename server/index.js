@@ -32,12 +32,13 @@ app.use('/', express.static('build'));
 const ws = {
   handler: {
     onMessage(rawMsg) {
-      const msg = JSON.parse(rawMsg);
+      // Blind hope that message is JSON (as it should), only other way to deal with this is try/catch DansGame
+      const msg = JSON.parse(rawMsg); 
       
       switch(msg.type) {
         case 'new':
-          if(VoteController.new(msg.vote.title, msg.vote.time, msg.vote.questions, msg.vote.options)) {
-            console.log(`Vote started - ${msg.vote.title}`);
+          if(VoteController.new(msg.data.title, msg.data.time, msg.data.questions, msg.data.options || null)) {
+            console.log(`Vote started - ${msg.data.title}`);
           } else {
             console.log("Can't create vote when already running.");
           }
@@ -57,7 +58,6 @@ const ws = {
   }
 }
 
-
 wss.on('connection', client => {
   client.on('message', ws.handler.onMessage); // May need to bind to this
 });
@@ -74,15 +74,17 @@ VoteController.on('new', vote => {
 VoteController.on('update', votes => {
   ws.broadcast(JSON.stringify({
     type: 'update',
-    votes
+    data: votes
   }));
 });
 
-VoteController.on('end', vote => {
+VoteController.on('end', voteInstance => {
   ws.broadcast(JSON.stringify({
     type: 'end',
-    data: vote.args,
-    votes: vote.votes
+    data: {
+      info: voteInstance.args,
+      votes: voteInstance.votes
+    }
   }));
 });
 

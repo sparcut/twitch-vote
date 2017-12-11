@@ -13,7 +13,7 @@ class VoteController extends EventEmitter {
   new(title, time, questions, options) {
     if(this.current === null) {
       this.current = new Vote(title, time, questions, options);
-      this.watchVote();
+      this.startVote();
       return true;
     } else {
       return false;
@@ -26,7 +26,7 @@ class VoteController extends EventEmitter {
     }
   }
 
-  watchVote() {
+  startVote() {
     this.current.on('ready', () => {
       this.emit('new', this.current);
     });
@@ -36,10 +36,12 @@ class VoteController extends EventEmitter {
     });
 
     this.current.on('end', () => {
-      this.emit('end');
+      this.emit('end', this.current);
       this.current.removeAllListeners();
       this.current = null;
     });
+
+    this.current.init();
   }
 
   newMessage(message, user) {
