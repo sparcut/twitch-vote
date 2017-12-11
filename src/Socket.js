@@ -3,8 +3,9 @@ import EventEmitter from 'events';
 // Simple wrapper for WebSocket, making it easier to interface with.
 class Socket {
   constructor(url = null) {
-    url = url || `ws://${window.location.hostname}`;
-    this.ws = new WebSocket(`ws://${window.location.hostname}`);
+    const port = window.location.port !== '' ? ':' + window.location.port : '';
+    url = url || `ws://${window.location.hostname}${port}`;
+    this.ws = new WebSocket(url);
   }
 
   on(event, callback) {

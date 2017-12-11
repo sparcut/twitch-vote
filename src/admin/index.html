@@ -8,15 +8,88 @@
     <title>Twitch Vote Chat - Admin</title>
   </head>
   <body>
-    <div class="vote-container">
-
-    </div>
+    <div class="vote-container"></div>
 
     <div class="vote-form">
+      
+      <!-- Title -->
+      <div class="form-item">
+        <label for="new-vote-title">Title: </label>
+        <input id="new-vote-title" type="text" value="Is Kappa a dead emote?">
+      </div>
+
+      <!-- Time -->
+      <div class="form-item">
+        <label for="new-vote-time">Time (seconds): </label>
+        <input id="new-vote-time" type="number" value="60">
+      </div>
+      
+      <!-- Question 1 -->
+      <div class="form-item">
+        <h4>Question 1</h4>
+
+        <div>
+          <label for="new-vote-q1-option">Option: </label>
+          <input id="new-vote-q1-option" type="text" value="A">
+        </div>
+
+        <div>
+            <label for="new-vote-q1-text">Text: </label>
+            <input id="new-vote-q1-text" type="text" value="No">
+          </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="form-item">
+        <h4>Question 2</h4>
+
+        <div>
+          <label for="new-vote-q2-option">Option: </label>
+          <input id="new-vote-q2-option" type="text" value="B">
+        </div>
+
+        <div>
+            <label for="new-vote-q2-text">Text: </label>
+            <input id="new-vote-q2-text" type="text" value="No">
+          </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="form-item">
+        <h4>Question 3</h4>
+
+        <div>
+          <label for="new-vote-q3-option">Option: </label>
+          <input id="new-vote-q3-option" type="text" value="C">
+        </div>
+
+        <div>
+          <label for="new-vote-q3-text">Text: </label>
+          <input id="new-vote-q3-text" type="text" value="Maybe">
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="form-item">
+        <h4>Question 4</h4>
+
+        <div>
+          <label for="new-vote-q4-option">Option: </label>
+          <input id="new-vote-q4-option" type="text" value="D">
+        </div>
+
+        <div>
+          <label for="new-vote-q4-text">Text: </label>
+          <input id="new-vote-q4-text" type="text" value="Kinda">
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <br>
+      <input id="new-vote-submit" type="submit">
 
     </div>
     
-    <script src="index.js"></script>
-    <script src="index.js"></script>
+    <script src="/js/admin.js"></script>
   </body>
 </html>

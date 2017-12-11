@@ -22,7 +22,7 @@ module.exports = {
   },
   output: {
     path: dist,
-    filename: './[name].js'
+    filename: 'js/[name].js'
   },
 
   module: {},
