@@ -48,3 +48,5 @@ class VoteController extends EventEmitter {
     }
   }
 }
+
+module.exports = VoteController;

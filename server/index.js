@@ -4,7 +4,7 @@ const http = require('http');
 const tmi = require('tmi.js');
 const WebSocket = require('ws');
 
-const vController = require('VoteController'); 
+const voteController = require('./VoteController'); 
 
 // --- Config ---
 const CONFIG = require('../config.json');
@@ -14,7 +14,7 @@ const CONFIG = require('../config.json');
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
-const VoteController = new vController;
+const VoteController = new voteController;
 const TwitchClient = new tmi.client({
   identity: {
     username: CONFIG.twitch.username,
@@ -25,7 +25,7 @@ const TwitchClient = new tmi.client({
 
 
 // --- Express ---
-app.use('/', express.static('public'));
+app.use('/', express.static('build'));
 
 
 // --- WebSocket ---
@@ -51,7 +51,7 @@ const ws = {
   broadcast(msg, sender) {
     wss.clients.forEach(client => {
       if(client !== sender && client.readyState === WebSocket.OPEN) {
-        client.send(data);
+        client.send(msg);
       }
     })
   }
@@ -59,8 +59,7 @@ const ws = {
 
 
 wss.on('connection', client => {
-
-  client.on('message', ws.onMessage); // May need to bind to this
+  client.on('message', ws.handler.onMessage); // May need to bind to this
 });
 
 
@@ -94,7 +93,7 @@ TwitchClient.on('message', (channel, userstate, message, self) => {
   switch(userstate['message-type']) {
     case "chat":
     case "whisper":
-      VoteController.newMessage(message, user);
+      VoteController.newMessage(message, userstate);
     break;
     // case "action":
     // break;
